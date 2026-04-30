@@ -117,7 +117,7 @@ fun StrengthMapCard(strength: SubjectStrength) {
 
             // Score bar
             LinearProgressIndicator(
-                progress = strength.score / 100f,
+                progress = (strength.score / 100.0).toFloat(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(8.dp),

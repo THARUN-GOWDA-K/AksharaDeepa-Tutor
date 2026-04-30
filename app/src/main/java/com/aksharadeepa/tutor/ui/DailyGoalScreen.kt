@@ -54,11 +54,6 @@ fun DailyGoalScreen(
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(
-                            brush = androidx.compose.foundation.background(
-                                Color(0xFF6200EA)
-                            ).brush
-                        )
                         .background(Color(0xFF6200EA))
                         .padding(24.dp),
                     horizontalAlignment = Alignment.CenterHorizontally

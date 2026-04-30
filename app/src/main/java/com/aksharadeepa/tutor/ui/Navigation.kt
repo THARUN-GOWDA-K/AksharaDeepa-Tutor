@@ -4,7 +4,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Book
 import androidx.compose.material.icons.filled.CheckCircle
-import androidx.compose.material.icons.filled.GradeA
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.Quiz
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -22,7 +22,7 @@ sealed class Screen(val route: String, val title: String, val icon: ImageVector)
     object SyllabusTracker : Screen("syllabus_tracker", "Syllabus", Icons.Filled.Book)
     object QuizMode : Screen("quiz_mode", "Quiz", Icons.Filled.Quiz)
     object StrengthMap : Screen("strength_map", "Strength Map", Icons.Filled.CheckCircle)
-    object DailyGoal : Screen("daily_goal", "Daily Goal", Icons.Filled.GradeA)
+    object DailyGoal : Screen("daily_goal", "Daily Goal", Icons.Filled.Star)
 }
 
 val screens = listOf(
