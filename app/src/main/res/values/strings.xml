@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Akshara-Deepa Tutor</string>
+    
+    <!-- Navigation -->
+    <string name="syllabus_tracker">Syllabus Tracker</string>
+    <string name="quiz_mode">Quiz Mode</string>
+    <string name="strength_map">Strength Map</string>
+    <string name="daily_goal">Daily Goal</string>
+    
+    <!-- Quiz -->
+    <string name="question">Question</string>
+    <string name="your_answer">Your Answer</string>
+    <string name="review_answer">Review Answer</string>
+    <string name="submit">Submit</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="finish">Finish Quiz</string>
+    
+    <!-- Results -->
+    <string name="score">Score</string>
+    <string name="correct">Correct</string>
+    <string name="incorrect">Incorrect</string>
+    <string name="result">Result</string>
+</resources>
