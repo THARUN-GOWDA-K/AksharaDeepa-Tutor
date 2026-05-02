@@ -1,5 +1,7 @@
 package com.aksharadeepa.tutor.viewmodel
 
+import android.annotation.SuppressLint
+import androidx.compose.runtime.compositionLocalOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -10,6 +12,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import java.time.LocalDate
+
+// CompositionLocal to provide repository throughout the app
+val LocalRepository = compositionLocalOf<TutorRepository?> { null }
 
 class SyllabusTrackerViewModel(private val repository: TutorRepository) : ViewModel() {
 
@@ -85,6 +90,7 @@ class QuizViewModel(private val repository: TutorRepository) : ViewModel() {
 
     private var currentAttemptId: Long = -1
 
+    @SuppressLint("NewApi")
     fun startQuiz(chapterId: Int) {
         viewModelScope.launch {
             _loading.value = true
@@ -111,6 +117,7 @@ class QuizViewModel(private val repository: TutorRepository) : ViewModel() {
         }
     }
 
+    @SuppressLint("NewApi")
     fun startDailyQuiz(subject: String) {
         viewModelScope.launch {
             _loading.value = true
@@ -155,6 +162,7 @@ class QuizViewModel(private val repository: TutorRepository) : ViewModel() {
         }
     }
 
+    @SuppressLint("NewApi")
     fun submitQuiz(): QuizResult {
         viewModelScope.launch {
             val correctCount = calculateCorrectAnswers()
@@ -266,6 +274,7 @@ class DailyGoalViewModel(private val repository: TutorRepository) : ViewModel() 
         loadDailyGoal()
     }
 
+    @SuppressLint("NewApi")
     private fun loadDailyGoal() {
         viewModelScope.launch {
             _loading.value = true

@@ -34,11 +34,15 @@ class MainActivity : ComponentActivity() {
         }
 
         setContent {
-            MaterialTheme {
-                Surface(
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    AppNavigation()
+            androidx.compose.runtime.CompositionLocalProvider(
+                com.aksharadeepa.tutor.viewmodel.LocalRepository provides repository
+            ) {
+                MaterialTheme {
+                    Surface(
+                        color = MaterialTheme.colorScheme.background
+                    ) {
+                        AppNavigation()
+                    }
                 }
             }
         }

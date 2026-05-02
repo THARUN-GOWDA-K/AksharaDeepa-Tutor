@@ -19,11 +19,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.aksharadeepa.tutor.data.model.Chapter
+import com.aksharadeepa.tutor.viewmodel.LocalRepository
 import com.aksharadeepa.tutor.viewmodel.SyllabusTrackerViewModel
+import com.aksharadeepa.tutor.viewmodel.TutorViewModelFactory
 
 @Composable
 fun SyllabusTrackerScreen(
-    viewModel: SyllabusTrackerViewModel = viewModel(),
+    viewModel: SyllabusTrackerViewModel = viewModel(factory = TutorViewModelFactory(LocalRepository.current ?: throw Exception("Repository not provided"))),
     onChapterSelected: (Chapter) -> Unit = {}
 ) {
     val chapters by viewModel.chapters.collectAsState()

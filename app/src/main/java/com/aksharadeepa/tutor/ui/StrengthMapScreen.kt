@@ -15,11 +15,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.aksharadeepa.tutor.data.model.SubjectStrength
+import com.aksharadeepa.tutor.viewmodel.LocalRepository
 import com.aksharadeepa.tutor.viewmodel.StrengthMapViewModel
+import com.aksharadeepa.tutor.viewmodel.TutorViewModelFactory
 
 @Composable
 fun StrengthMapScreen(
-    viewModel: StrengthMapViewModel = viewModel()
+    viewModel: StrengthMapViewModel = viewModel(factory = TutorViewModelFactory(LocalRepository.current ?: throw Exception("Repository not provided")))
 ) {
     val subjectStrengths by viewModel.subjectStrengths.collectAsState()
     val loading by viewModel.loading.collectAsState()

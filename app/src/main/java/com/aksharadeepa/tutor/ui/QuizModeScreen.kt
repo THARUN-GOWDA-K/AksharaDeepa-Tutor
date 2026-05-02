@@ -16,11 +16,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.aksharadeepa.tutor.viewmodel.LocalRepository
 import com.aksharadeepa.tutor.viewmodel.QuizViewModel
+import com.aksharadeepa.tutor.viewmodel.TutorViewModelFactory
 
 @Composable
 fun QuizModeScreen(
-    viewModel: QuizViewModel = viewModel(),
+    viewModel: QuizViewModel = viewModel(factory = TutorViewModelFactory(LocalRepository.current ?: throw Exception("Repository not provided"))),
     chapterId: Int = -1,
     onQuizComplete: () -> Unit = {}
 ) {

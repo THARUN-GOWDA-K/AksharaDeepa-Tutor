@@ -1,5 +1,6 @@
 package com.aksharadeepa.tutor.ui
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -14,12 +15,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.aksharadeepa.tutor.viewmodel.LocalRepository
 import com.aksharadeepa.tutor.viewmodel.DailyGoalViewModel
+import com.aksharadeepa.tutor.viewmodel.TutorViewModelFactory
 import java.time.LocalDate
 
+@SuppressLint("NewApi")
 @Composable
 fun DailyGoalScreen(
-    viewModel: DailyGoalViewModel = viewModel()
+    viewModel: DailyGoalViewModel = viewModel(factory = TutorViewModelFactory(LocalRepository.current ?: throw Exception("Repository not provided")))
 ) {
     val dailyGoal by viewModel.dailyGoal.collectAsState()
 
