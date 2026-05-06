@@ -30,7 +30,7 @@ fun DailyGoalScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFF5F5F5))
+            .background(Color(0xFFACC8A2))
             .padding(16.dp)
     ) {
         Text(
@@ -58,7 +58,7 @@ fun DailyGoalScreen(
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(Color(0xFF6200EA))
+                        .background(Color(0xFF1A2517))
                         .padding(24.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
@@ -111,6 +111,55 @@ fun DailyGoalScreen(
                             .padding(top = 24.dp),
                         color = Color(0xFF4CAF50),
                         trackColor = Color.White.copy(alpha = 0.3f)
+                    )
+                }
+            }
+
+            // Recommended Topic Card
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 16.dp),
+                elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
+                shape = RoundedCornerShape(12.dp)
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(Color.White)
+                        .padding(16.dp)
+                ) {
+                    Text(
+                        "Today's Recommended Topic",
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color(0xFF1A2517),
+                        modifier = Modifier.padding(bottom = 12.dp)
+                    )
+
+                    // Generate a chapter based on date for consistency
+                    val dayOfMonth = LocalDate.now().dayOfMonth
+                    val recommendedChapter = ((dayOfMonth - 1) % 45) + 1
+                    val topicList = listOf(
+                        "Cell Structure and Function",
+                        "Photosynthesis Basics",
+                        "Respiration Process",
+                        "Protein Synthesis",
+                        "DNA Replication"
+                    )
+                    val topic = topicList[(recommendedChapter - 1) % topicList.size]
+
+                    Text(
+                        "Chapter $recommendedChapter: $topic",
+                        fontSize = 14.sp,
+                        color = Color(0xFF333333),
+                        modifier = Modifier.padding(bottom = 8.dp)
+                    )
+
+                    Text(
+                        "Complete this topic to achieve your daily goal!",
+                        fontSize = 12.sp,
+                        color = Color(0xFF888888)
                     )
                 }
             }

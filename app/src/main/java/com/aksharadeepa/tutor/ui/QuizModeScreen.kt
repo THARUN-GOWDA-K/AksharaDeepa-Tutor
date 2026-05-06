@@ -3,6 +3,8 @@ package com.aksharadeepa.tutor.ui
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
@@ -32,9 +34,11 @@ fun QuizModeScreen(
     val currentIndex by viewModel.currentQuestionIndex.collectAsState()
     val loading by viewModel.loading.collectAsState()
 
-    LaunchedEffect(chapterId) {
-        if (!quizStarted && chapterId != -1) {
-            viewModel.startQuiz(chapterId)
+    if (chapterId != -1) {
+        LaunchedEffect(chapterId) {
+            if (!quizStarted && questions.isEmpty()) {
+                viewModel.startQuiz(chapterId)
+            }
         }
     }
 
@@ -60,15 +64,22 @@ fun QuizModeScreen(
                 totalQuestions = questions.size
             )
         }
-        else -> {
+        chapterId != -1 && !quizStarted -> {
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(Color(0xFFF5F5F5)),
+                    .background(Color(0xFFACC8A2)),
                 contentAlignment = Alignment.Center
             ) {
-                Text("No quiz available")
+                CircularProgressIndicator()
             }
+        }
+        else -> {
+            QuizSelectionScreen(
+                onQuizSelected = { selectedChapterId ->
+                    viewModel.startQuiz(selectedChapterId)
+                }
+            )
         }
     }
 }
@@ -86,7 +97,7 @@ fun QuizQuestionScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFF5F5F5))
+            .background(Color(0xFFACC8A2))
             .padding(16.dp)
     ) {
         // Progress indicator
@@ -108,7 +119,7 @@ fun QuizQuestionScreen(
                     .weight(1f)
                     .padding(start = 16.dp)
                     .height(6.dp),
-                color = Color(0xFF6200EA)
+                color = Color(0xFF1A2517)
             )
         }
 
@@ -166,7 +177,7 @@ fun QuizQuestionScreen(
                 onClick = { viewModel.previousQuestion() },
                 enabled = currentIndex > 0,
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFF6200EA)
+                    containerColor = Color(0xFF1A2517)
                 ),
                 modifier = Modifier.weight(1f)
             ) {
@@ -191,7 +202,7 @@ fun QuizQuestionScreen(
                 Button(
                     onClick = { viewModel.nextQuestion() },
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = Color(0xFF6200EA)
+                        containerColor = Color(0xFF1A2517)
                     ),
                     modifier = Modifier.weight(1f)
                 ) {
@@ -214,7 +225,7 @@ fun QuizOptionButton(
     Button(
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(
-            containerColor = if (isSelected) Color(0xFF6200EA) else Color(0xFFE0E0E0),
+            containerColor = if (isSelected) Color(0xFF1A2517) else Color(0xFFE8F0E8),
             contentColor = if (isSelected) Color.White else Color.Black
         ),
         modifier = Modifier
@@ -277,7 +288,7 @@ fun QuizResultScreen(
                     text = "${score.toInt()}%",
                     fontSize = 64.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFF6200EA),
+                    color = Color(0xFF1A2517),
                     modifier = Modifier.padding(bottom = 16.dp)
                 )
 
@@ -298,6 +309,94 @@ fun QuizResultScreen(
                         .height(48.dp)
                 ) {
                     Text("Back to Menu", fontSize = 16.sp)
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun QuizSelectionScreen(onQuizSelected: (Int) -> Unit) {
+    val subjects = listOf("Science", "Math", "Social Studies")
+    val chaptersPerSubject = mapOf(
+        "Science" to (1..20),
+        "Math" to (21..30),
+        "Social Studies" to (31..45)
+    )
+
+    var selectedSubject by remember { mutableStateOf("Science") }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color(0xFFACC8A2))
+            .padding(16.dp)
+    ) {
+        Text(
+            "Select Chapter for Quiz",
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(bottom = 16.dp),
+            color = Color(0xFF1A2517)
+        )
+
+        // Subject selection tabs
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 16.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            subjects.forEach { subject ->
+                Button(
+                    onClick = { selectedSubject = subject },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = if (subject == selectedSubject) Color(0xFF1A2517) else Color(0xFFE8F0E8)
+                    ),
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Text(
+                        subject,
+                        fontSize = 12.sp,
+                        color = if (subject == selectedSubject) Color.White else Color.Black
+                    )
+                }
+            }
+        }
+
+        // Chapter list
+        val chapters = chaptersPerSubject[selectedSubject] ?: (1..20)
+        LazyColumn(
+            modifier = Modifier.fillMaxWidth(),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            items(chapters.toList()) { chapterId ->
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { onQuizSelected(chapterId) },
+                    elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(Color.White)
+                            .padding(12.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Text(
+                            "Chapter $chapterId",
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            color = Color(0xFF1A2517)
+                        )
+                        Text(
+                            "Take Quiz →",
+                            fontSize = 12.sp,
+                            color = Color(0xFF1A2517)
+                        )
+                    }
                 }
             }
         }

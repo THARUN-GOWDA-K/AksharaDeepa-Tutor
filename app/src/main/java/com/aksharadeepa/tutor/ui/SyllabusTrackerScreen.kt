@@ -36,7 +36,7 @@ fun SyllabusTrackerScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFF5F5F5))
+            .background(Color(0xFFACC8A2))
             .padding(16.dp)
     ) {
         Text(
@@ -84,7 +84,6 @@ fun SyllabusTrackerScreen(
                         chapter = chapter,
                         onChapterClick = {
                             onChapterSelected(chapter)
-                            viewModel.markChapterComplete(chapter.id)
                         },
                         onProgressUpdate = { percentage ->
                             viewModel.updateChapterProgress(chapter.id, percentage)
@@ -101,7 +100,7 @@ fun SubjectTab(subject: String, isSelected: Boolean, onClick: () -> Unit) {
     Button(
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(
-            containerColor = if (isSelected) Color(0xFF6200EA) else Color(0xFFE0E0E0),
+            containerColor = if (isSelected) Color(0xFF1A2517) else Color(0xFFE8F0E8),
             contentColor = if (isSelected) Color.White else Color.Black
         ),
         modifier = Modifier
@@ -141,7 +140,7 @@ fun ChapterCard(
                     Text(
                         text = "Chapter ${chapter.chapterNumber}",
                         fontSize = 14.sp,
-                        color = Color(0xFF6200EA),
+                        color = Color(0xFF1A2517),
                         fontWeight = FontWeight.Bold
                     )
                     Text(
@@ -166,8 +165,8 @@ fun ChapterCard(
                     .fillMaxWidth()
                     .padding(top = 12.dp)
                     .height(6.dp),
-                color = Color(0xFF6200EA),
-                trackColor = Color(0xFFE0E0E0)
+                color = Color(0xFF1A2517),
+                trackColor = Color(0xFFE8F0E8)
             )
 
             Text(

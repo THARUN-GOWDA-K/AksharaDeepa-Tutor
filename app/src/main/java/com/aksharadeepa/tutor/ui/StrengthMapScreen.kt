@@ -29,7 +29,7 @@ fun StrengthMapScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFF5F5F5))
+            .background(Color(0xFFACC8A2))
             .padding(16.dp)
     ) {
         Text(
@@ -73,7 +73,7 @@ fun StrengthMapScreen(
                             .fillMaxWidth()
                             .height(48.dp),
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = Color(0xFF6200EA)
+                            containerColor = Color(0xFF1A2517)
                         )
                     ) {
                         Text("Refresh", fontSize = 16.sp)
@@ -124,7 +124,7 @@ fun StrengthMapCard(strength: SubjectStrength) {
                     .fillMaxWidth()
                     .height(8.dp),
                 color = getScoreColor(strength.score),
-                trackColor = Color(0xFFE0E0E0)
+                trackColor = Color(0xFFE8F0E8)
             )
 
             Row(

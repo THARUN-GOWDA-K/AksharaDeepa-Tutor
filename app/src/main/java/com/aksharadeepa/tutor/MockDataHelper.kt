@@ -20,63 +20,63 @@ class MockDataHelper(private val repository: TutorRepository) {
     private suspend fun initializeChapters() {
         val chapters = listOf(
             // Science chapters - Biology
-            Chapter(subject = "Science", chapterName = "Cell - Structure and Function", chapterNumber = 1),
-            Chapter(subject = "Science", chapterName = "Plant Tissues", chapterNumber = 2),
-            Chapter(subject = "Science", chapterName = "Animal Tissues", chapterNumber = 3),
-            Chapter(subject = "Science", chapterName = "Photosynthesis", chapterNumber = 4),
-            Chapter(subject = "Science", chapterName = "Respiration and Energy Flow", chapterNumber = 5),
-            Chapter(subject = "Science", chapterName = "Nervous System", chapterNumber = 6),
-            Chapter(subject = "Science", chapterName = "Endocrine System", chapterNumber = 7),
-            Chapter(subject = "Science", chapterName = "Reproduction in Plants", chapterNumber = 8),
-            Chapter(subject = "Science", chapterName = "Reproduction in Animals", chapterNumber = 9),
-            Chapter(subject = "Science", chapterName = "Heredity and Evolution", chapterNumber = 10),
+            Chapter(subject = "Science", chapterName = "Cell - Structure and Function", chapterNumber = 1, totalTopics = 5),
+            Chapter(subject = "Science", chapterName = "Plant Tissues", chapterNumber = 2, totalTopics = 4),
+            Chapter(subject = "Science", chapterName = "Animal Tissues", chapterNumber = 3, totalTopics = 4),
+            Chapter(subject = "Science", chapterName = "Photosynthesis", chapterNumber = 4, totalTopics = 4),
+            Chapter(subject = "Science", chapterName = "Respiration and Energy Flow", chapterNumber = 5, totalTopics = 4),
+            Chapter(subject = "Science", chapterName = "Nervous System", chapterNumber = 6, totalTopics = 5),
+            Chapter(subject = "Science", chapterName = "Endocrine System", chapterNumber = 7, totalTopics = 4),
+            Chapter(subject = "Science", chapterName = "Reproduction in Plants", chapterNumber = 8, totalTopics = 4),
+            Chapter(subject = "Science", chapterName = "Reproduction in Animals", chapterNumber = 9, totalTopics = 5),
+            Chapter(subject = "Science", chapterName = "Heredity and Evolution", chapterNumber = 10, totalTopics = 5),
             
             // Science chapters - Physics
-            Chapter(subject = "Science", chapterName = "Atoms and Molecules", chapterNumber = 11),
-            Chapter(subject = "Science", chapterName = "Motion", chapterNumber = 12),
-            Chapter(subject = "Science", chapterName = "Forces and Newton's Laws", chapterNumber = 13),
-            Chapter(subject = "Science", chapterName = "Work, Energy and Power", chapterNumber = 14),
-            Chapter(subject = "Science", chapterName = "Sound", chapterNumber = 15),
+            Chapter(subject = "Science", chapterName = "Atoms and Molecules", chapterNumber = 11, totalTopics = 4),
+            Chapter(subject = "Science", chapterName = "Motion", chapterNumber = 12, totalTopics = 5),
+            Chapter(subject = "Science", chapterName = "Forces and Newton's Laws", chapterNumber = 13, totalTopics = 5),
+            Chapter(subject = "Science", chapterName = "Work, Energy and Power", chapterNumber = 14, totalTopics = 5),
+            Chapter(subject = "Science", chapterName = "Sound", chapterNumber = 15, totalTopics = 4),
             
             // Science chapters - Chemistry
-            Chapter(subject = "Science", chapterName = "Chemical Reactions", chapterNumber = 16),
-            Chapter(subject = "Science", chapterName = "Acids, Bases and Salts", chapterNumber = 17),
-            Chapter(subject = "Science", chapterName = "Metals and Non-metals", chapterNumber = 18),
-            Chapter(subject = "Science", chapterName = "Carbon and Its Compounds", chapterNumber = 19),
-            Chapter(subject = "Science", chapterName = "Periodic Table", chapterNumber = 20),
+            Chapter(subject = "Science", chapterName = "Chemical Reactions", chapterNumber = 16, totalTopics = 4),
+            Chapter(subject = "Science", chapterName = "Acids, Bases and Salts", chapterNumber = 17, totalTopics = 5),
+            Chapter(subject = "Science", chapterName = "Metals and Non-metals", chapterNumber = 18, totalTopics = 4),
+            Chapter(subject = "Science", chapterName = "Carbon and Its Compounds", chapterNumber = 19, totalTopics = 4),
+            Chapter(subject = "Science", chapterName = "Periodic Table", chapterNumber = 20, totalTopics = 5),
             
             // Math chapters
-            Chapter(subject = "Math", chapterName = "Number System", chapterNumber = 1),
-            Chapter(subject = "Math", chapterName = "Polynomials", chapterNumber = 2),
-            Chapter(subject = "Math", chapterName = "Pair of Linear Equations", chapterNumber = 3),
-            Chapter(subject = "Math", chapterName = "Quadratic Equations", chapterNumber = 4),
-            Chapter(subject = "Math", chapterName = "Arithmetic Progressions", chapterNumber = 5),
-            Chapter(subject = "Math", chapterName = "Triangles", chapterNumber = 6),
-            Chapter(subject = "Math", chapterName = "Coordinate Geometry", chapterNumber = 7),
-            Chapter(subject = "Math", chapterName = "Circles", chapterNumber = 8),
-            Chapter(subject = "Math", chapterName = "Trigonometry", chapterNumber = 9),
-            Chapter(subject = "Math", chapterName = "Probability and Statistics", chapterNumber = 10),
+            Chapter(subject = "Math", chapterName = "Number System", chapterNumber = 1, totalTopics = 5),
+            Chapter(subject = "Math", chapterName = "Polynomials", chapterNumber = 2, totalTopics = 4),
+            Chapter(subject = "Math", chapterName = "Pair of Linear Equations", chapterNumber = 3, totalTopics = 4),
+            Chapter(subject = "Math", chapterName = "Quadratic Equations", chapterNumber = 4, totalTopics = 4),
+            Chapter(subject = "Math", chapterName = "Arithmetic Progressions", chapterNumber = 5, totalTopics = 5),
+            Chapter(subject = "Math", chapterName = "Triangles", chapterNumber = 6, totalTopics = 5),
+            Chapter(subject = "Math", chapterName = "Coordinate Geometry", chapterNumber = 7, totalTopics = 4),
+            Chapter(subject = "Math", chapterName = "Circles", chapterNumber = 8, totalTopics = 4),
+            Chapter(subject = "Math", chapterName = "Trigonometry", chapterNumber = 9, totalTopics = 5),
+            Chapter(subject = "Math", chapterName = "Probability and Statistics", chapterNumber = 10, totalTopics = 4),
             
             // Social Studies - History chapters
-            Chapter(subject = "Social Studies", chapterName = "The Rise of Nationalism in Europe", chapterNumber = 1),
-            Chapter(subject = "Social Studies", chapterName = "The French Revolution", chapterNumber = 2),
-            Chapter(subject = "Social Studies", chapterName = "Socialism in Europe and Russia", chapterNumber = 3),
-            Chapter(subject = "Social Studies", chapterName = "Print Culture and Modern World", chapterNumber = 4),
-            Chapter(subject = "Social Studies", chapterName = "Imperialism and India", chapterNumber = 5),
+            Chapter(subject = "Social Studies", chapterName = "The Rise of Nationalism in Europe", chapterNumber = 1, totalTopics = 4),
+            Chapter(subject = "Social Studies", chapterName = "The French Revolution", chapterNumber = 2, totalTopics = 5),
+            Chapter(subject = "Social Studies", chapterName = "Socialism in Europe and Russia", chapterNumber = 3, totalTopics = 4),
+            Chapter(subject = "Social Studies", chapterName = "Print Culture and Modern World", chapterNumber = 4, totalTopics = 4),
+            Chapter(subject = "Social Studies", chapterName = "Imperialism and India", chapterNumber = 5, totalTopics = 5),
             
             // Social Studies - Geography chapters
-            Chapter(subject = "Social Studies", chapterName = "Resources and Development", chapterNumber = 6),
-            Chapter(subject = "Social Studies", chapterName = "Water Resources", chapterNumber = 7),
-            Chapter(subject = "Social Studies", chapterName = "Agriculture", chapterNumber = 8),
-            Chapter(subject = "Social Studies", chapterName = "Minerals and Energy Resources", chapterNumber = 9),
-            Chapter(subject = "Social Studies", chapterName = "Manufacturing Industries", chapterNumber = 10),
+            Chapter(subject = "Social Studies", chapterName = "Resources and Development", chapterNumber = 6, totalTopics = 4),
+            Chapter(subject = "Social Studies", chapterName = "Water Resources", chapterNumber = 7, totalTopics = 4),
+            Chapter(subject = "Social Studies", chapterName = "Agriculture", chapterNumber = 8, totalTopics = 5),
+            Chapter(subject = "Social Studies", chapterName = "Minerals and Energy Resources", chapterNumber = 9, totalTopics = 4),
+            Chapter(subject = "Social Studies", chapterName = "Manufacturing Industries", chapterNumber = 10, totalTopics = 4),
             
             // Social Studies - Civics chapters
-            Chapter(subject = "Social Studies", chapterName = "Power Sharing", chapterNumber = 11),
-            Chapter(subject = "Social Studies", chapterName = "Federalism", chapterNumber = 12),
-            Chapter(subject = "Social Studies", chapterName = "Democracy and Diversity", chapterNumber = 13),
-            Chapter(subject = "Social Studies", chapterName = "Gender, Religion and Caste", chapterNumber = 14),
-            Chapter(subject = "Social Studies", chapterName = "Political Parties and Electoral Politics", chapterNumber = 15)
+            Chapter(subject = "Social Studies", chapterName = "Power Sharing", chapterNumber = 11, totalTopics = 4),
+            Chapter(subject = "Social Studies", chapterName = "Federalism", chapterNumber = 12, totalTopics = 5),
+            Chapter(subject = "Social Studies", chapterName = "Democracy and Diversity", chapterNumber = 13, totalTopics = 4),
+            Chapter(subject = "Social Studies", chapterName = "Gender, Religion and Caste", chapterNumber = 14, totalTopics = 5),
+            Chapter(subject = "Social Studies", chapterName = "Political Parties and Electoral Politics", chapterNumber = 15, totalTopics = 4)
         )
 
         chapters.forEach { repository.insertChapter(it) }

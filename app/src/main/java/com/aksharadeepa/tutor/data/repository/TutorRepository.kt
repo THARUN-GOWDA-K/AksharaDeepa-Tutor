@@ -108,19 +108,30 @@ class TutorRepository(
     // Combined operations
     suspend fun calculateSubjectStrengths(): List<SubjectStrength> {
         val subjects = listOf("Science", "Math", "Social Studies")
-        return subjects.mapNotNull { subject ->
-            val averageScore = quizAttemptDao.getAverageScoreByChapter(0)?.toDouble() ?: 0.0
+        return subjects.map { subject ->
             val chapters = chapterDao.getChaptersBySubject(subject)
             val completedChapters = chapters.count { it.isCompleted }
-
-            if (chapters.isNotEmpty()) {
-                SubjectStrength(
-                    subject = subject,
-                    score = averageScore,
-                    chaptersCompleted = completedChapters,
-                    totalChapters = chapters.size
-                )
-            } else null
+            
+            // Calculate average score from all quiz attempts in this subject's chapters
+            var totalScore = 0.0
+            var attemptCount = 0
+            
+            chapters.forEach { chapter ->
+                val averageForChapter = quizAttemptDao.getAverageScoreByChapter(chapter.id)
+                if (averageForChapter != null) {
+                    totalScore += averageForChapter
+                    attemptCount++
+                }
+            }
+            
+            val averageScore = if (attemptCount > 0) (totalScore / attemptCount) else 0.0
+            
+            SubjectStrength(
+                subject = subject,
+                score = averageScore,
+                chaptersCompleted = completedChapters,
+                totalChapters = chapters.size
+            )
         }
     }
 }

@@ -5,6 +5,8 @@ plugins {
     id("org.jetbrains.kotlin.plugin.compose")
 }
 
+// IDE cache fix - force Gradle DSL re-parsing
+
 android {
     namespace = "com.aksharadeepa.tutor"
     compileSdk = 34

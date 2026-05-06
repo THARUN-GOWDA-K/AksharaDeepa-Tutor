@@ -2,4 +2,15 @@
 <resources>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    
+    <!-- Theme Colors - AksharaDeepa Design -->
+    <color name="soft_sage">#ACC8A2</color>
+    <color name="deep_olive">#1A2517</color>
+    <color name="light_sage">#E8F0E8</color>
+    
+    <!-- Status Colors -->
+    <color name="success_green">#4CAF50</color>
+    <color name="warning_orange">#FF9800</color>
+    <color name="error_red">#F44336</color>
+    <color name="dark_gray">#666666</color>
 </resources>
