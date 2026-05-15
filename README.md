@@ -213,6 +213,7 @@ For issues or questions:
 4. Clear app cache and reinstall
 
 ## Author
-
+THARUN GOWDA K - 1VE22CS172
+SRI VENKATESHWRA COLLEGE OF ENGINEERING
 Developed as part of MindMatrix VTU Internship Program
 Project Title: Android App Development using GenAI - Akshara-Deepa Tutor (Education)
